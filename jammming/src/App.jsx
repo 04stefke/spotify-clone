@@ -1,14 +1,12 @@
-
 import './App.css'
-import { spotify } from './api/api'
-
+import Login from './components/login/login'
 
 function App() {
 
 
   return (
     <div>
-
+      <Login></Login>
     </div>
   )
 }
