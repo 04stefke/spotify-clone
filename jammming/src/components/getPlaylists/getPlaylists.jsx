@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
+import SearchBar from '../searchBar/SearchBar'
 
 
 export default function GetPlaylists() {
