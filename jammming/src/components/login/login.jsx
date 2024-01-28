@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import './login.css'
+import { useNavigate } from 'react-router-dom'
 const auth_uri = 'https://accounts.spotify.com/authorize'
 const client_id = 'ad706be7f85f476786a6e38b81389999'
 const redirect_uri = 'http://localhost:5173/webapp'
@@ -38,10 +39,10 @@ export default function Login() {
             localStorage.setItem('expires_in', expires_in);
             localStorage.setItem('token_type', token_type);
         }
-    });
+
+    }, []);
     const handleLogin = () => {
         window.location = `${auth_uri}?redirect_uri=${redirect_uri}&client_id=${client_id}&scope=${scopes_joined}&response_type=token&show_dialog=true`
-        onLoginSuccess()
     };
     
     return (
