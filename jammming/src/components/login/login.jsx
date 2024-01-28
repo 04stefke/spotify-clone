@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-
+import './login.css'
 const auth_uri = 'https://accounts.spotify.com/authorize'
 const client_id = 'ad706be7f85f476786a6e38b81389999'
 const redirect_uri = 'http://localhost:5173/'
@@ -45,7 +45,7 @@ export default function Login() {
     };
     
     return (
-        <div>
+        <div className='login-btn btn'>
             <button onClick={handleLogin}>Log in to Spotify</button>
         </div>
     )
