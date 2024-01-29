@@ -16,38 +16,17 @@ const scopes = ['streaming', 'playlist-read-private',
 
 const scopes_joined = scopes.join('%20')
 
-const getAuthToken = (hash) => {
-    const stringAfterHash = hash.substring(1)
-    const paramsInUrl = stringAfterHash.split('&')
-
-    const urlSplitUp = paramsInUrl.reduce((accumulater, currentValue) => {
-        console.log(currentValue)
-        const [key,value] = currentValue.split('=')
-        accumulater[key] = value
-        return accumulater;
-    }, {})
-    return urlSplitUp;
-};
-
 export default function Login() {
 
-    useEffect(()=>{
-        if(window.location.hash){
-            const {access_token, expires_in, token_type} = getAuthToken(window.location.hash);
-            localStorage.clear();
-            localStorage.setItem('access_token', access_token);
-            localStorage.setItem('expires_in', expires_in);
-            localStorage.setItem('token_type', token_type);
-        }
 
-    }, []);
     const handleLogin = () => {
         window.location = `${auth_uri}?redirect_uri=${redirect_uri}&client_id=${client_id}&scope=${scopes_joined}&response_type=token&show_dialog=true`
+
     };
     
     return (
         <div className='login-btn btn'>
-            <button onClick={handleLogin}>Log in to Spotify</button>
+            <button onClick={handleLogin()}>Log in to Spotify</button>
         </div>
     )
 };
